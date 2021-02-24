@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ingreso Ucompensar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="min.css">
+    <script src="js/min.js"></script>
+</head>
+
+<body>
+
+    <div class="container" id="main">
+
+        <div class="container p-3 my-3 text-center">
+            <h1>Control Ingreso UCompensar</h1>
+            <div id="logo">
+                <img src="multi/logo-mini.jpg" class="img-fluid" alt="Responsive image" id="img">
+                <div class="container border border-white">
+                    <h6>Recuerda que este proceso lo debes realizar a diario para ingresar a la universidad o reportar
+                        tu trabajo en casa.</h6>
+                </div>
+            </div>
+
+            <div id="modals">
+                <div class="modal fade" id="registroDatosModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="registroDatosModalLabel">Datos registrados correctamente
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Ya puedes solicitar la autorización de ingreso a la universidad
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="btn-modal-datos"
+                                    data-dismiss="modal">Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="validacionCamposModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="validacionCamposModalLabel"> </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="modalBodyCampos">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="btn-modal-campos"
+                                    data-dismiss="modal">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" id="section">
+
+                <div id="cajaCedula" class="container p-3 my-3">
+
+                    <form id="form-documento">
+
+                        <div class="form-group">
+
+                            <div class="col">
+                                <div class="alert alert-primary" role="alert" id="mensajeDocumento">
+                                    Debes de ingresar el número de documento para continuar
+                                </div>
+
+                                <div class="alert alert-danger" role="alert" id="documentoVacio">
+                                    Número de docuemnto vacio
+                                </div>
+                                <input type="number" class="form-control" id="numeroDocumento"
+                                    placeholder="* Número documento">
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <form id="form">
+
+                        <div id="registroPersonal">
+
+                            <div class="form-group text-center">
+                                <h4>Registro Información Personal</h4>
+                            </div>
+
+                            <div class="form-group d-flex">
+
+                                <div class="col">
+                                    <input type="text" placeholder="* Nombre completo" maxlength="50"
+                                        class="flex-fill form-control" id="nombre">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group d-flex">
+
+                                <div class="col">
+                                    <input type="number" placeholder="* Número de contacto 1" maxlength="11"
+                                        class="flex-fill form-control" id="telefono1">
+                                </div>
+                                <div class="col">
+                                    <input type="number" placeholder="* Número de contacto 2" maxlength="11"
+                                        class="flex-fill form-control" id="telefono2">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group d-flex">
+
+                                <div class="col">
+                                    <input type="email" placeholder="* Correo" maxlength="50"
+                                        class="flex-fill form-control" id="correo">
+                                </div>
+                                <div class="col">
+                                    <input type="number" placeholder="* Edad" class="flex-fill form-control"
+                                        minlength="1" maxlength="2" id="edad">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group d-flex">
+
+                                <div class="col">
+                                    <select name="tipoDocumento" id="tipoDocumento" class="flex-fill form-control">
+                                        <option value="0">* Tipo documento</option>
+                                        <option value="TI">Tarjeta identidad</option>
+                                        <option value="CC">Cédula</option>
+                                        <option value="PS">Pasaporte</option>
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <select name="eps" id="eps" class="flex-fill form-control">
+                                        <option value="0">* EPS</option>
+                                        <option value="ALIANSALUD">ALIANSALUD</option>
+                                        <option value="COMPENSAR EPS">COMPENSAR EPS</option>
+                                        <option value="FAMISANAR">FAMISANAR</option>
+                                        <option value="CRUZ BLANCA">CRUZ BLANCA</option>
+                                        <option value="SANITAS">SANITAS</option>
+                                        <option value="COOMEVA EPS">COOMEVA EPS</option>
+                                        <option value="COMPENSAR">COMPENSAR</option>
+                                        <option value="SALUD TOTAL">SALUD TOTAL</option>
+                                        <option value="SURA">SURA</option>
+                                        <option value="SANITAS">SANITAS</option>
+                                        <option value="MEDIMAS EPS S.A.S">MEDIMAS EPS S.A.S</option>
+                                        <option value="UNISALUD">UNISALUD</option>
+                                        <option value="FAMISANAR ">FAMISANAR </option>
+                                        <option value="NUEVA EPS S.A.">NUEVA EPS S.A.</option>
+                                        <option value="EPS SURA">EPS SURA</option>
+                                        <option value="COMFENALCO VALLE  EPS">COMFENALCO VALLE EPS</option>
+                                        <option value="SURA EPS">SURA EPS</option>
+                                        <option value="COOMEVA EPS">COOMEVA EPS</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="ALIANSALUD">ALIANSALUD</option>
+                                        <option value="otra">OTRA</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group d-flex">
+                                <div class="col">
+                                    <button type="button" class="btn btn-lg btn-block" id="btn-datos">Enviar
+                                        Datos</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="container p-3 my-3" id="form-salud">
+                    <h4>Control de salud</h4>
+
+                    <form id="form">
+
+                        <div class="form-group d-flex">
+                            <div class="col">
+
+                                <select name="modalidad" id="modalidad" class="custom-select">
+                                    <option value="0"> * Voy a trabajar desde</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="oficina">Universidad</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group d-flex">
+                            <div class="col">
+
+                                <select name="sede" id="sede" class="custom-select">
+                                    <option value="0"> * Sede Ucompensar</option>
+                                    <option value="bogota">Bogotá</option>
+                                    <option value="meta">Meta</option>
+                                    <option value="valle">Valle</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col">
+
+                                <div class="alert alert-secondary" role="alert">
+                                    Recuerda ingresar el valor de la temperatura correctamente como se muestra
+                                    :
+                                    37.5
+                                </div>
+
+                                <input type="number" class="form-control" placeholder="* Cual fue mi temperatura"
+                                    id="temperatura">
+
+                            </div>
+                        </div>
+
+                        <div id="preguntas">
+
+                            <div id="pregunta1">
+                                <div class="col">
+
+                                    <div class="form-group d-flex">
+
+                                        <label>¿Has tenido contacto en los últimos 14 días o vives con alguien
+                                            sospechoso o confirmado de tener Covid-19?</label>
+
+                                    </div>
+
+                                    <div class="form-group d-flex">
+
+                                        <select name="" id="respuestaPregunta1" class="custom-select">
+                                            <option value="0">* Selecione una opción</option>
+                                            <option value="si">SI</option>
+                                            <option value="no">NO</option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="pregunta2">
+                                <div class="col">
+
+                                    <div class="form-group d-flex">
+
+                                        <label>¿ Ha presentado algún síntoma como: tos, Fiebre o dificultad respiratoria
+                                            o dos o mas de los siguientes: Resfriado, escalofrió, dolores musculares,
+                                            dolor de garganta, dolor de cabeza, perdida del gusto o del olfato?</label>
+
+                                    </div>
+
+                                    <div class="form-group d-flex">
+
+                                        <select name="" id="respuestaPregunta2" class="custom-select">
+                                            <option value="0">* Selecione una opción</option>
+                                            <option value="si">SI</option>
+                                            <option value="no">NO</option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col"></div>
+                                <input id="terminos" class="legal" type="checkbox"
+                                    required="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>*</span>
+                                Al
+                                enviar
+                                este
+                                formulario declaro que conozco y acepto la <a
+                                    href="https://unipanamericana.edu.co/nuestra-institucion/politicas-de-datos/"
+                                    target="_blank">Política
+                                    de Protección de Datos Personales.</a></input>
+                            </div>
+                        </div>
+
+                        <div class="form-group d-flex">
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-block" id="btn">Enviar Solicitud</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
